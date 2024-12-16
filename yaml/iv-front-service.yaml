@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: iv-frontend-service
+spec:
+  selector:
+    app: frontend
+  ports:
+  - port: 80  # 외부에서 80 포트로 접근
+    targetPort: 3000  # 실제 프론트엔드 컨테이너의 포트
+  type: NodePort  # 외부에서 접근 가능하도록 설정
+
