@@ -10,7 +10,7 @@ const app = express();
 // 미들웨어 설정
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.REACT_APP_BASE_URL,
     credentials: true,
   })
 );
@@ -41,12 +41,12 @@ app.post("/ask", async (req, res) => {
   if (response) {
     res.json({ response: response });
   } else {
-    res.status(500).json({ error: 'ChatGPT API 호출 실패' });
+    res.status(500).json({ error: "ChatGPT API 호출 실패" });
   }
 });
 
 // 서버 실행
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`서버가 포트 ${PORT}에서 실행 중입니다.`);
 });
