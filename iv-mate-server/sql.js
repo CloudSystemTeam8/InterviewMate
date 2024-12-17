@@ -1,11 +1,11 @@
 module.exports = {
   // auth 회원
-  email_check: `SELECT * FROM user WHERE email = ?`,
-  nick_check: `SELECT * FROM user WHERE nickname = ?`,
-  register: `INSERT INTO user (email, nickname, password) VALUES (?, ?, ?)`,
-  login: `SELECT password FROM user WHERE email = ?`,
-  user_no_get: `SELECT user_no, nickname FROM user WHERE email = ?`,
-  get_userinfo: `SELECT email, nickname FROM user WHERE user_no = ?`,
+  email_check: `SELECT * FROM USER WHERE email = ?`,
+  nick_check: `SELECT * FROM USER WHERE nickname = ?`,
+  register: `INSERT INTO USER (email, nickname, password) VALUES (?, ?, ?)`,
+  login: `SELECT password FROM USER WHERE email = ?`,
+  user_no_get: `SELECT user_no, nickname FROM USER WHERE email = ?`,
+  get_userinfo: `SELECT email, nickname FROM USER WHERE user_no = ?`,
 
   // AI
   get_jobinfo: `INSERT INTO SESSION (user_no, session_job, session_status) VALUES (?, ?, '진행중')`,
