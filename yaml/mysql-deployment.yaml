@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iv-mysql-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: mysql-node
+                operator: In
+                values:
+                - "true"
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "sook1906!"
+        - name: MYSQL_DATABASE
+          value: "interviewmate"
+        - name: MYSQL_HOST
+          value: "localhost"
+        - name: MYSQL_USER
+          value: "interviewmate"
+        volumeMounts:
+        - name: init-scripts
+          mountPath: /docker-entrypoint-initdb.d
+        ports:
+        - containerPort: 3306
+      volumes:
+      - name: init-scripts
+        configMap:
+          name: mysql-init-scripts
+
