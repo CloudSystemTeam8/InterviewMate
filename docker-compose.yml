@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: interviewmate1/iv-frontend:v1
+    build:
+      context: ./iv-mate
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - interviewmate_iv_network
+    depends_on:
+      - iv-backend-service
+    environment:
+      - REACT_APP_API_URL=http://backend:3000
+
+
+  iv-backend-service:
+    image: interviewmate1/iv-backend:v2
+    build:
+      context: ./iv-mate-server
+    container_name: backend
+    ports:
+      - "5001:5001"
+    networks:
+      - interviewmate_iv_network
+    depends_on:
+      - mysql
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=interviewmate
+      - MYSQL_ROOT_PASSWORD=sook1906!
+      - MYSQL_NAME=interviewmate
+    command: ["./wait-for-it.sh", "mysql:3306", "--", "npm", "start"]
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: sook1906!
+      MYSQL_DATABASE: interviewmate
+      MYSQL_USER: interviewmate
+      MYSQL_PASSWORD: sook1906!
+      MYSQL_HOST: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - interviewmate_iv_network
+
+networks:
+  interviewmate_iv_network:
+    name: interviewmate_iv_network
+    driver: bridge
+
