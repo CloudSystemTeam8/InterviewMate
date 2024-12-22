@@ -9,7 +9,7 @@
 ### 개발 기간
 - 2024.11.21 ~ 2024.12.17
 
-### 배포 링크
+### 관련 링크
 - [DOCKER](https://hub.docker.com/u/interviewmate1)
 - [Canva 발표](https://www.canva.com/design/DAGZhKE4e38/j056DkGgbzqXw5zckbEosQ/view?utm_content=DAGZhKE4e38&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he8d6b216c1)
 
