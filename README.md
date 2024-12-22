@@ -26,7 +26,8 @@
 ## ERD
 ![ERD](https://github.com/user-attachments/assets/8cddd746-203c-424c-aa2c-b06402015ea5)
 
-## 시연 영상
+## 시연 영상바로가기
+**사진을 누르면 이동합니다.**
 [![InterviewMateDemo](https://github.com/user-attachments/assets/2dad03bb-6e47-4e5f-8391-5b5abf87ee0c)](https://drive.google.com/file/d/1ThoCayb-lYAzA3q9bWbTHnmy-SoBefB9/view?usp=sharing)
 
 ## 주요 기능
